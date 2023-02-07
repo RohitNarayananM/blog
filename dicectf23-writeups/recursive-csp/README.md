@@ -81,6 +81,31 @@ We tried this so for so long and while it was running we searched for other ways
 
 So we searched for `crc32` collissions and got [this](https://github.com/fyxme/crc-32-hash-collider)
 
+```go
+func AddLetter(c chan string, combo string, alphabet string, length int) {
+	// Check if we reached the length limit
+	// If so, we just return without adding anything
+	if length <= 0 {
+		return
+	}
+
+	var newCombo string
+	for _, ch := range alphabet {
+		newCombo = combo + string(ch)
+		c <- newCombo
+		AddLetter(c, newCombo, alphabet, length-1)
+	}
+}
+
+func worker(wChan chan string, target uint32) {
+	for tString := range wChan {
+		if crc32.ChecksumIEEE([]byte(tString)) == target {
+			fmt.Println("Collision found:", tString)
+		}
+	}
+}
+```
+
 This is just a crc32 hash collider written in go. It will start with a String and append as many characters as `maxLen` would allow and try if the hash matches. So all that was left was for us to decide on a nonce and give its corresponding integer as the `target` in the code.
 
 **Note: Here we had to use a domain as the payload can only contain 127 characters and if we use webhook url we won't have enough charcters left to bruteforce**
