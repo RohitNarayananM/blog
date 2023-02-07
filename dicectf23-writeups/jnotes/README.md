@@ -102,7 +102,7 @@ document.cookie='=note=";path=//';
 
 Now the textarea will have the flag value
 
-[textarea](/dicectf23-writeups/jnotes/images/textarea.png)
+![textarea](/dicectf23-writeups/jnotes/images/textarea.png)
 
 Now we can just open an `iframe` with url `https://jnotes.mc.ax//` and get its content. 
 
