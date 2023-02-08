@@ -87,10 +87,30 @@ Now the header will be sent like this
 
 ![note-cookie-header](/dicectf23-writeups/jnotes/images/note-cookie-header.png)
 
-Here the our `note` cookie is sent last. We need it to be the first cookie. So chrome basically orders cookies based on these rules
+Here the our `note` cookie is sent last. We need it to be the first cookie. So chrome basically orders cookies based on these rules. 
 
 - Cookies with longer path are listed before cookies with shorter path.
 - Cookies which are edited least recently are listed before cookies which are edited most recently.
+
+I colud get these rules from [RFC-6265](https://www.rfc-editor.org/rfc/rfc6265#section-5.4)
+
+```
+ 2.  The user agent SHOULD sort the cookie-list in the following
+       order:
+
+       *  Cookies with longer paths are listed before cookies with
+          shorter paths.
+
+       *  Among cookies that have equal-length path fields, cookies with
+          earlier creation-times are listed before cookies with later
+          creation-times.
+
+       NOTE: Not all user agents sort the cookie-list in this order, but
+       this order reflects common practice when this document was
+       written, and, historically, there have been servers that
+       (erroneously) depended on this order.
+ ```
+
 
 Here the `FLAG` cookie will be the first cookie as it is the least editted cookie and it has the longest path `/`. Now to make our cookie first, we can change the path of our `note` cookie to be `//` and increase the path length.
 
