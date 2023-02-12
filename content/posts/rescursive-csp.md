@@ -1,4 +1,19 @@
-# Recursive-csp
+---
+Title: Recursive-csp - DiceCTF 2023
+Date: 2023-02-08T00:00:00+05:30
+Tags: [web, csp, dicectf23-writeups, ctf, writeup, nonce, hash-collision]
+Categories: [dicectf23-writeups,All Writeups]
+Authors: [Rohit]
+
+twemoji: true
+---
+
+#### tl;dr
+
+  - Craft a payload with a random nonce
+  - Use something like hash-collider to collide the nonce we gave earlier
+
+<!--more-->
 
 ## Description
 

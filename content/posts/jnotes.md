@@ -1,4 +1,23 @@
-# Jnotes
+---
+title: Jnotes - DiceCTF 2023
+date: 2023-02-08T00:00:00+05:30
+tags: [web, java, xss, httponly, dicectf23-writeups, writeup, ctf]
+categories: [dicectf23-writeups,All Writeups]
+authors: [Rohit]
+
+twemoji: true
+---
+
+#### tl;dr
+
+  - Java mishandles the cookies such that when there is a cookie with a `"`, it will take all the cookies until there is a `"` as that cookie's value
+  - We can set empty cookies using javascript `document.cookie="=value"`;
+  - Use that to set a new note cookie by adding `note` in the value `document.cookie='=note="';`
+  - Make our cookie first by giving path as `//` as chrome sends cookies with longer paths first
+  - Now create an iframe with `//` as src and read its innerHTML
+
+
+<!--more-->
 
 ## Description
 
@@ -71,21 +90,21 @@ Now some interesting facts about cookies in browsers that we use to solve this c
 
 - We can create empty cookies using `document.cookies="=value"`
 
-![empty](/dicectf23-writeups/jnotes/images/empty.png)
+![empty](images/empty.png)
 
 Now the cookie header will be sent like:
 
-![header](/dicectf23-writeups/jnotes/images/empty-cookie-header.png)
+![header](images/empty-cookie-header.png)
 
 Now, even if we can't create a new `note` cookie as its [HttpOnly](https://owasp.org/www-community/HttpOnly), we can create an empty cookie with value `note="` to bypass this
 
-![cookie](/dicectf23-writeups/jnotes/images/note-cookie.png)
+![cookie](images/note-cookie.png)
 
-![note](/dicectf23-writeups/jnotes/images/cookie-note.png)
+![note](images/cookie-note.png)
 
 Now the header will be sent like this
 
-![note-cookie-header](/dicectf23-writeups/jnotes/images/note-cookie-header.png)
+![note-cookie-header](images/note-cookie-header.png)
 
 Here the our `note` cookie is sent last. We need it to be the first cookie. So chrome basically orders cookies based on these rules. 
 
@@ -118,11 +137,11 @@ Here the `FLAG` cookie will be the first cookie as it is the least editted cooki
 document.cookie='=note=";path=//';
 ```
 
-![cookie-path](/dicectf23-writeups/jnotes/images/cookie-path.png)
+![cookie-path](images/cookie-path.png)
 
 Now the textarea will have the flag value
 
-![textarea](/dicectf23-writeups/jnotes/images/textarea.png)
+![textarea](images/textarea.png)
 
 Now we can just open an `iframe` with url `https://jnotes.mc.ax//` and get its content. 
 
