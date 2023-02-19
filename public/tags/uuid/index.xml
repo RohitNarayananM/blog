@@ -1,0 +1,23 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>uuid - Tag - My Blog</title>
+        <link>http://r0h1t.me/blog/tags/uuid/</link>
+        <description>uuid - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor>
+            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/tags/uuid/" rel="self" type="application/rss+xml" /><item>
+    <title>uuid hell - LA CTF 2023</title>
+    <link>http://r0h1t.me/blog/posts/uuid-hell/</link>
+    <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
+                    <name>Rohit</name>
+                </author><guid>http://r0h1t.me/blog/posts/uuid-hell/</guid>
+    <description><![CDATA[<h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>It uses uuidv1 which is time-based</li>
+<li>We get the user uid from the cookie</li>
+<li>Then create an admin and get all the current admin hashes as an array from the web page</li>
+<li>Create another user</li>
+<li>Brutefoce the first eight bytes of the uuid in the range and check with each hash in the array</li>
+<li>Use the one that matches</li>
+</ul>]]></description>
+</item></channel>
+</rss>

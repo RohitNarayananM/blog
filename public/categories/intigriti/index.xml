@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Intigriti - Category - My Blog</title>
+        <link>http://r0h1t.me/blog/categories/intigriti/</link>
+        <description>Intigriti - Category - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor>
+            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Thu, 16 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/categories/intigriti/" rel="self" type="application/rss+xml" /><item>
+    <title>intigriti XSS Challenge Writeup - February 2023</title>
+    <link>http://r0h1t.me/blog/posts/intigriti-0223/</link>
+    <pubDate>Thu, 16 Feb 2023 00:00:00 &#43;0530</pubDate><author>
+                    <name>Rohit</name>
+                </author><guid>http://r0h1t.me/blog/posts/intigriti-0223/</guid>
+    <description><![CDATA[tl;dr They are appending the image comment to a JSON using '{&quot;imgName&quot;:&quot;NFT.jpg&quot;,&quot;imgColorType&quot;: &quot; '+strcol+' &quot; ,&quot;imgComment&quot;: &quot; '+ strval +' &quot;}' If any key is repeated JSON.parse will take only the last key-value pair. Then they are setting innerHTML as namfield.innerHTML = &quot;Image name: &quot; + temp.imgName; Give a&quot;,&quot;imgName&quot;:&quot;&lt;img src onerror=alert(document.domain) &gt; as the image&rsquo;s comment Solution Understanding the codeHere we can see that we have an NFT and we can change its accessories mouth etc.]]></description>
+</item></channel>
+</rss>

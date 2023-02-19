@@ -29,22 +29,36 @@ enableEmoji = true
     highlightTag = "em"
     # DoIt NEW | 0.2.4 whether to use the absolute URL based on the baseURL in search index
     absoluteURL = false
-    [params.search.algolia]
-      index = ""
-      appID = ""
-      searchKey = ""
     [params.search.fuse]
-      # DoIt NEW | 0.2.12 https://fusejs.io/api/options.html
       isCaseSensitive = false
       minMatchCharLength = 2
-      findAllMatches = false
+      findAllMatches = true
       location = 0
       threshold = 0.3
       distance = 100
       ignoreLocation = false
       useExtendedSearch = false
       ignoreFieldNorm = false
-    [params.home]
+  [params.footer]
+    enable = true
+    # DoIt NEW | 0.2.0 Custom content (HTML format is supported)
+    custom = ''
+    # DoIt NEW | 0.2.0 whether to show Hugo and theme info
+    hugo = false
+    # <a title="Github Pages" href="https://docs.github.com/en/pages/" target="_blank" rel="noopener noreffer">GitHub Pages</a>
+    hostedOn = '' 
+    # DoIt NEW | 0.2.0 whether to show copyright info
+    copyright = true
+    # DoIt NEW | 0.2.0 whether to show the author
+    author = true
+    # Site creation time
+    since = 2023
+  [params.analytics]
+    enable = false
+    # Google Analytics
+    [params.analytics.google]
+      id = "G-L6TEV86QF7"
+  [params.home]
     rss = 10
     [params.home.profile]
       enable = true
@@ -80,21 +94,6 @@ enableEmoji = true
       Whatsapp = true
     [params.page.comment]
       enable = true
-      # Disqus comment config
-      [params.page.comment.disqus]
-        # DoIt NEW | 0.1.1
-        enable = false
-        # Disqus shortname to use Disqus in posts
-        shortname = ""
-      # Gitalk comment config
-      [params.page.comment.gitalk]
-        # DoIt NEW | 0.1.1
-        enable = false
-        owner = ""
-        repo = ""
-        clientId = ""
-        clientSecret = ""
-      # Valine comment config
       [params.page.comment.valine]
         enable = false
         appId = ""
@@ -109,17 +108,12 @@ enableEmoji = true
         highlight = true
         enableQQ = false
         serverURLs = ""
-        # DoIt NEW | 0.2.6 emoji data file name, default is "google.yml"
-        # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
-        # located in "themes/DoIt/assets/data/emoji/" directory
-        # you can store your own data files in the same path under your project:
-        # "assets/data/emoji/"
         emoji = ""
       # Waline comment config
       [params.page.comment.waline]
         # DoIt CHANGED | 0.2.14
-        enable = false
-        serverURL = ""
+        enable = true
+        serverURL = "https://r0h1t.me/blog/"
         pageview = true
         comment = true
         # emoji = ['https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo']
@@ -129,39 +123,8 @@ enableEmoji = true
         # wordLimit = 0
         # pageSize = 10
         # imageUploader = false
-        # highlighter = false
-        # texRenderer = false
-      # Facebook comment config
-      [params.page.comment.facebook]
-        enable = false
-        width = "100%"
-        numPosts = 10
-        appId = ""
-        languageCode = ""
-      # DoIt NEW | 0.2.0 Telegram comments config
-      [params.page.comment.telegram]
-        enable = false
-        siteID = ""
-        limit = 5
-        height = ""
-        color = ""
-        colorful = true
-        dislikes = false
-        outlined = false
-        dark = false
-      # DoIt NEW | 0.2.0 Commento comment config
-      [params.page.comment.commento]
-        enable = false
-      # DoIt NEW | 0.2.5 Utterances comment config
-      [params.page.comment.utterances]
-        enable = false
-        # owner/repo
-        repo = ""
-        issueTerm = "pathname"
-        label = ""
-        lightTheme = "github-light"
-        darkTheme = "github-dark"
-      # DoIt NEW | 0.2.12 Twikoo comment config
+        # highlighter = true
+        # texRenderer = true
       [params.page.comment.twikoo]
         enable = false
         envId = ""

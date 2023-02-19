@@ -1,0 +1,22 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>httponly - Tag - My Blog</title>
+        <link>http://r0h1t.me/blog/tags/httponly/</link>
+        <description>httponly - Tag - My Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor>
+            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/tags/httponly/" rel="self" type="application/rss+xml" /><item>
+    <title>Jnotes - DiceCTF 2023</title>
+    <link>http://r0h1t.me/blog/posts/jnotes/</link>
+    <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
+                    <name>Rohit</name>
+                </author><guid>http://r0h1t.me/blog/posts/jnotes/</guid>
+    <description><![CDATA[<h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>Java mishandles the cookies such that when there is a cookie with a <code>&quot;</code>, it will take all the cookies until there is a <code>&quot;</code> as that cookie&rsquo;s value</li>
+<li>We can set empty cookies using javascript <code>document.cookie=&quot;=value&quot;</code>;</li>
+<li>Use that to set a new note cookie by adding <code>note</code> in the value <code>document.cookie='=note=&quot;';</code></li>
+<li>Make our cookie first by giving path as <code>//</code> as chrome sends cookies with longer paths first</li>
+<li>Now create an iframe with <code>//</code> as src and read its innerHTML</li>
+</ul>]]></description>
+</item></channel>
+</rss>
