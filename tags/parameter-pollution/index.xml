@@ -1,0 +1,6 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>parameter-pollution - Tag - My Blog</title><link>http://r0h1t.me/blog/tags/parameter-pollution/</link><description>parameter-pollution - Tag - My Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor><webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 15 Feb 2023 00:00:00 +0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/tags/parameter-pollution/" rel="self" type="application/rss+xml"/><item><title>queue up - LA CTF 2023</title><link>http://r0h1t.me/blog/posts/queue-up/</link><pubDate>Wed, 15 Feb 2023 00:00:00 +0530</pubDate><author><name>Rohit</name></author><guid>http://r0h1t.me/blog/posts/queue-up/</guid><description><![CDATA[<h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>Find the flag server <code>qu-flag.lac.tf</code></li>
+<li>send a request to <code>https://qu-flag.lac.tf</code> with the <code>uuid</code> as an array and its first element as <code>{uuid}/bypass#</code></li>
+<li>Visit the server with that uuid as a cookie</li>
+</ul>]]></description></item></channel></rss>
