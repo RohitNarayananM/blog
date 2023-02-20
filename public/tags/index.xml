@@ -54,6 +54,13 @@
     </author><guid>http://r0h1t.me/blog/tags/writeup/</guid>
     <description><![CDATA[]]></description>
 </item><item>
+    <title>xss</title>
+    <link>http://r0h1t.me/blog/tags/xss/</link>
+    <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
+        <name>Rohit</name>
+    </author><guid>http://r0h1t.me/blog/tags/xss/</guid>
+    <description><![CDATA[]]></description>
+</item><item>
     <title>csp</title>
     <link>http://r0h1t.me/blog/tags/csp/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
@@ -66,13 +73,6 @@
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
         <name>Rohit</name>
     </author><guid>http://r0h1t.me/blog/tags/dicectf23-writeups/</guid>
-    <description><![CDATA[]]></description>
-</item><item>
-    <title>httponly</title>
-    <link>http://r0h1t.me/blog/tags/httponly/</link>
-    <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
-        <name>Rohit</name>
-    </author><guid>http://r0h1t.me/blog/tags/httponly/</guid>
     <description><![CDATA[]]></description>
 </item></channel>
 </rss>

