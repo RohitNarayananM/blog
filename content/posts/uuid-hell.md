@@ -102,12 +102,29 @@ app.post('/createadmin', (req, res) => {
 
 app.listen(process.env.PORT);
 ```
+Here we can see that the website uses [uuidv1](https://www.sohamkamani.com/uuid-versions-explained/#v1--uniqueness). 
 
-Here we can see that the website uses [uuidv1](https://www.sohamkamani.com/uuid-versions-explained/#v1--uniqueness). UUID V1 is weak as it is based on time and some parts are constant. Only the first 8 bytes are changing.
+### Problems with UUID V1
+
+We can see the options for uuid v1 [here](https://www.npmjs.com/package/uuid#uuidv1options-buffer-offset)
+
+![uuidv1](images/uuidv1.png)
+
+In the code, we can see that they are giving 2 arguments `node` and `clockseq`
+
+```js
+function randomUUID() {
+    return uuid.v1({'node': [0x67, 0x69, 0x6E, 0x6B, 0x6F, 0x69], 'clockseq': 0b10101001100100});
+}
+```
+
+We can get the code for uuidv1 [here](https://github.com/uuidjs/uuid/blob/main/src/v1.js).
+
+`node` and `clockseq` are initialized to random values if they are not given as arguments. But as we are providing them as arguments, most of the uuid is constant for a given time.
 
 ![constant](images/constant.png)
 
-So we easily brute-force it and get the admin cookie. That's what we thought
+UUID V1 is time-based. Only the first 8 bytes are changing and they are changing according to time and are in increasing order. With this info, we can easily brute-force it and get the admin cookie. At least that's what we thought
 
 ### Bruteforcing
 

@@ -46,7 +46,7 @@ Use the one that matches
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/r0h1t.me\/blog\/posts\/uuid-hell\/"
-        },"genre": "posts","keywords": "web, lactf23-writeups, ctf, writeup, hash-collision, uuid","wordcount":  611 ,
+        },"genre": "posts","keywords": "web, lactf23-writeups, ctf, writeup, hash-collision, uuid","wordcount":  699 ,
         "url": "http:\/\/r0h1t.me\/blog\/posts\/uuid-hell\/","datePublished": "2023-02-15T00:00:00+05:30","dateModified": "2023-02-15T00:00:00+05:30","publisher": {
             "@type": "Organization",
             "name": "Rohit"},"authors": [{
@@ -139,8 +139,8 @@ Use the one that matches
             <div class="post-meta-line">
                 <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='http://r0h1t.me/blog/authors/rohit'>Rohit</a></span>
                 </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">categories <a href="/blog/categories/lactf23-writeups/"><i class="far fa-folder fa-fw"></i>lactf23-writeups</a>&nbsp;<a href="/blog/categories/all-writeups/"><i class="far fa-folder fa-fw"></i>All Writeups</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;611 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/blog/posts/uuid-hell/" class="leancloud_visitors" data-flag-title="uuid hell - LA CTF 2023">
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;699 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;4 minutes&nbsp;<span id="/blog/posts/uuid-hell/" class="leancloud_visitors" data-flag-title="uuid hell - LA CTF 2023">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/blog/posts/uuid-hell/"></span>&nbsp;views
                     </span>&nbsp;<span id="/blog/posts/uuid-hell/" class="comment_count" data-flag-title="uuid hell - LA CTF 2023">
                         <i class="far fa-comments fa-fw"></i>&nbsp;<span class="waline-comment-count" id="waline-comment-count" data-path="/blog/posts/uuid-hell/"></span>&nbsp;comments
@@ -232,7 +232,24 @@ Use the one that matches
 </span></span><span class="line"><span class="cl"><span class="p">});</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">PORT</span><span class="p">);</span>
-</span></span></code></pre></div><p>Here we can see that the website uses <a href="https://www.sohamkamani.com/uuid-versions-explained/#v1--uniqueness" target="_blank" rel="noopener noreferrer">uuidv1</a>. UUID V1 is weak as it is based on time and some parts are constant. Only the first 8 bytes are changing.</p>
+</span></span></code></pre></div><p>Here we can see that the website uses <a href="https://www.sohamkamani.com/uuid-versions-explained/#v1--uniqueness" target="_blank" rel="noopener noreferrer">uuidv1</a>.</p>
+<h3 id="problems-with-uuid-v1" class="headerLink">
+    <a href="#problems-with-uuid-v1" class="header-mark"></a>Problems with UUID V1</h3><p>We can see the options for uuid v1 <a href="https://www.npmjs.com/package/uuid#uuidv1options-buffer-offset" target="_blank" rel="noopener noreferrer">here</a></p>
+<p><a class="lightgallery" href="images/uuidv1.png" title="uuidv1" data-thumbnail="images/uuidv1.png">
+        <img
+            
+            loading="lazy"
+            src="images/uuidv1.png"
+            srcset="images/uuidv1.png, images/uuidv1.png 1.5x, images/uuidv1.png 2x"
+            sizes="auto"
+            alt="images/uuidv1.png">
+    </a></p>
+<p>In the code, we can see that they are giving 2 arguments <code>node</code> and <code>clockseq</code></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">randomUUID</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">uuid</span><span class="p">.</span><span class="nx">v1</span><span class="p">({</span><span class="s1">&#39;node&#39;</span><span class="o">:</span> <span class="p">[</span><span class="mh">0x67</span><span class="p">,</span> <span class="mh">0x69</span><span class="p">,</span> <span class="mh">0x6E</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="mh">0x6F</span><span class="p">,</span> <span class="mh">0x69</span><span class="p">],</span> <span class="s1">&#39;clockseq&#39;</span><span class="o">:</span> <span class="mb">0b10101001100100</span><span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>We can get the code for uuidv1 <a href="https://github.com/uuidjs/uuid/blob/main/src/v1.js" target="_blank" rel="noopener noreferrer">here</a>.</p>
+<p><code>node</code> and <code>clockseq</code> are initialized to random values if they are not given as arguments. But as we are providing them as arguments, most of the uuid is constant for a given time.</p>
 <p><a class="lightgallery" href="images/constant.png" title="constant" data-thumbnail="images/constant.png">
         <img
             
@@ -242,7 +259,7 @@ Use the one that matches
             sizes="auto"
             alt="images/constant.png">
     </a></p>
-<p>So we easily brute-force it and get the admin cookie. That&rsquo;s what we thought</p>
+<p>UUID V1 is time-based. Only the first 8 bytes are changing and they are changing according to time and are in increasing order. With this info, we can easily brute-force it and get the admin cookie. At least that&rsquo;s what we thought</p>
 <h3 id="bruteforcing" class="headerLink">
     <a href="#bruteforcing" class="header-mark"></a>Bruteforcing</h3><p>So we started making a python script for that. <a href="files/exp.py" rel="">code</a></p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">requests</span>
