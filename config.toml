@@ -62,8 +62,8 @@ enableEmoji = true
     rss = 10
     [params.home.profile]
       enable = true
-      gravatarEmail = ""
-      avatarURL = "images/avatar.jpg"
+      gravatarEmail = "rohitnanu.m@gmail.com"
+      avatarURL = "images/img2.png"
       title = "Rohit Narayanan M"
       subtitle = "Nah remind me to put something here"
       typeit = true
@@ -169,8 +169,8 @@ enableEmoji = true
   name = "Rohit"
   email = "rohitnanu.m@gmail.com"
   link = "http://r0h1t.me/"
-  avatar = "images/avatar.jpg"
-  gravatarEmail = ""
+  avatar = "images/img2.png"
+  gravatarEmail = "rohitnanu.m@gmail.com"
 
 [menu]
   [[menu.main]]
